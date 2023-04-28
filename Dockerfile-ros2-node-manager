@@ -1,0 +1,14 @@
+FROM rostooling/setup-ros-docker:ubuntu-jammy-ros-humble-ros-base-latest
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update && apt-get upgrade -y
+# Install rust
+RUN apt-get update && apt-get install rustc cargo -y
+# Install colcon-cargo
+RUN pip3 install git+https://github.com/colcon/colcon-cargo.git
+# Install colcon-ros-cargo
+RUN pip3 install git+https://github.com/colcon/colcon-ros-cargo.git
+# Install cargo-amend-build
+RUN cargo install --debug cargo-ament-build
+
