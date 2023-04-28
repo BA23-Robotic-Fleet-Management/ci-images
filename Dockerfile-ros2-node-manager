@@ -3,12 +3,14 @@ FROM rostooling/setup-ros-docker:ubuntu-jammy-ros-humble-ros-base-latest
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && apt-get upgrade -y
-# Install rust
+# Install rust and cargo tooling to build rust packages
 RUN apt-get update && apt-get install rustc cargo -y
-# Install colcon-cargo
-RUN pip3 install git+https://github.com/colcon/colcon-cargo.git
-# Install colcon-ros-cargo
-RUN pip3 install git+https://github.com/colcon/colcon-ros-cargo.git
-# Install cargo-amend-build
 RUN cargo install --debug cargo-ament-build
-
+RUN pip3 install git+https://github.com/colcon/colcon-cargo.git
+RUN pip3 install git+https://github.com/colcon/colcon-ros-cargo.git
+RUN mkdir -p /root/workspace/src && \
+    cd /root/workspace && \
+    git clone https://github.com/ros2-rust/ros2_rust.git src/ros2_rust && \
+    vcs import src < src/ros2_rust/ros2_rust_foxy.repos && \
+    . /opt/ros/humble/setup.sh && \
+    colcon build
