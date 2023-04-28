@@ -2,6 +2,9 @@ name: Build and publish fleet-manager-ci-base
 
 on:
   push:
+    paths:
+      - Dockerfile-fleet-manager
+      - fleet-manager-docker-entrypoint.sh
 
 env:
   REGISTRY: ghcr.io

@@ -2,6 +2,8 @@ name: Build and publish ros2-node-manager-ci-base
 
 on:
   push:
+    paths:
+      - Dockerfile-ros2-node-manager
 
 env:
   REGISTRY: ghcr.io
