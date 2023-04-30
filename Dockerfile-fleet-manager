@@ -20,7 +20,10 @@ RUN apt-get update && apt-get install software-properties-common -y && \
 # Install rmf_demos
 COPY --from=rmf_demos /rmf_demos_ws /rmf_demos_ws
 # Install deps  for colcon build
-RUN apt-get update && apt-get install -y ament-cmake libyaml-cpp-dev libceres-dev libeigen3-dev python3-shapely python3-requests python3-yaml python3-pyproj python3-fiona python3-rtree libproj-dev ignition-tools libccd-dev liboctomap-dev libboost-filesystem-dev python3-socketio python3-fastapi
+RUN apt-get update && apt-get install -y ament-cmake libyaml-cpp-dev libceres-dev libeigen3-dev python3-shapely python3-requests \
+    python3-yaml python3-pyproj python3-fiona python3-rtree libproj-dev ignition-tools \
+    libccd-dev liboctomap-dev libboost-filesystem-dev python3-socketio python3-fastapi \
+    cyclonedds-dev ros-humble-nav2-*
 # Install zenoh-bridge-dds
 RUN curl -sSL https://github.com/eclipse-zenoh/zenoh-plugin-dds/releases/download/0.7.0-rc/zenoh-bridge-dds-0.7.0-rc-x86_64-unknown-linux-gnu.zip -o /root/zenoh-bridge-dds.zip && \
     unzip /root/zenoh-bridge-dds.zip -d /usr/bin/ && \
