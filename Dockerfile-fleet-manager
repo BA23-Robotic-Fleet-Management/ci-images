@@ -1,7 +1,7 @@
 # We need to get the rmf demos but sadly they can't be installed normally because of some
 # bug in fastapi that is in the current jammy
 # So we just copy it from the rmf_demos image
-FROM ghcr.io/open-rmf/rmf/rmf_demos AS rmf_demos
+FROM ghcr.io/ba23-robotic-fleet-management/rmf:main AS rmf_demos
 # Now comes the actual build
 FROM ubuntu:jammy
 
