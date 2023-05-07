@@ -30,6 +30,6 @@ RUN curl -sSL https://github.com/eclipse-zenoh/zenoh-plugin-dds/releases/downloa
     chmod +x /usr/bin/zenoh-bridge-dds
 # Create config directory
 RUN mkdir /etc/zenoh-bridge-dds
-COPY fleet-manager-docker-entrypoint.sh /fleet-manager-docker-entrypoint.sh
+COPY docker-entrypoint.sh /fleet-manager-docker-entrypoint.sh
 
 ENTRYPOINT ["bash", "/fleet-manager-docker-entrypoint.sh"]
