@@ -24,6 +24,8 @@ RUN apt-get update && apt-get install -y ament-cmake libyaml-cpp-dev libceres-de
     python3-yaml python3-pyproj python3-fiona python3-rtree libproj-dev ignition-tools \
     libccd-dev liboctomap-dev libboost-filesystem-dev python3-socketio python3-fastapi \
     cyclonedds-dev ros-humble-nav2-*
+# Install deps for envsubs
+RUN apt-get update && apt install -y gettext-base
 
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 
