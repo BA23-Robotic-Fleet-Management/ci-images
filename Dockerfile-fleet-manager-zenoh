@@ -26,6 +26,12 @@ RUN apt-get update && apt-get install -y ament-cmake libyaml-cpp-dev libceres-de
     cyclonedds-dev ros-humble-nav2-*
 # Install deps for envsubs
 RUN apt-get update && apt install -y gettext-base
+# Install zenoh-bridge-dds
+RUN curl -sSL https://github.com/eclipse-zenoh/zenoh-plugin-dds/releases/download/0.7.0-rc/zenoh-bridge-dds-0.7.0-rc-x86_64-unknown-linux-gnu.zip -o /root/zenoh-bridge-dds.zip && \
+    unzip /root/zenoh-bridge-dds.zip -d /usr/bin/ && \
+    chmod +x /usr/bin/zenoh-bridge-dds
+# Create config directory
+RUN mkdir /etc/zenoh-bridge-dds
 
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 
